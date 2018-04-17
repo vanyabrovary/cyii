@@ -1,0 +1,1234 @@
+{
+    "swagger": "2.0",
+    "host": "sb.ssh.in.ua",
+
+    "basePath": "/",
+
+    "schemes": ["https"],
+    "info": {
+        "version": "0.2.0",
+        "title": "REST API",
+        "description": "The REST API enables you to store and access user data in current project from apps on any platform.",
+        "contact": {
+            "email": "bi@cbmaster.net"
+        }
+    },
+    "tags": [{
+        "name": "strategy_set",
+        "description": "Everything for your strategy"
+    }, {
+        "name": "strategy",
+        "description": "Everything for your strategy"
+    }, {
+        "name": "strategy_item",
+        "description": "Items of each strategy"
+    }, {
+        "name": "template",
+        "description": "Everything for your strategy template"
+    }, {
+        "name": "task_type",
+        "description": "Everything for your strategy tasks"
+    }, {
+        "name": "worker",
+        "description": "Data from worker"
+    }, {
+        "name": "exten",
+        "description": "Exten"
+    }],
+    "paths": {
+
+        "/v2/{from}:{to}/expand": {
+            "get": {
+                "tags": ["exten"],
+                "summary": "One2Many",
+                "description": "JOIN",
+
+                "parameters": [{
+                    "in": "path",
+                    "name": "from",
+                    "description": "Snake case table name ( parent )",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "in": "path",
+                    "name": "to",
+                    "description": "Snake case table name ( child )",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "{id:1, join:[{...},{...}], count:3 }",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "INTERNAL ERROR",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+
+        "/v2/{from}:{to}/unfold": {
+            "get": {
+                "tags": ["exten"],
+                "summary": "One2One",
+                "description": "JOIN",
+
+                "parameters": [{
+                    "in": "path",
+                    "name": "from",
+                    "description": "Snake case table name ( parent )",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "in": "path",
+                    "name": "to",
+                    "description": "Snake case table name ( child )",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "{id:1, join:[{...},{...}], count:3 }",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "INTERNAL ERROR",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/{from}:{to}/expand/{vars}": {
+            "get": {
+                "tags": ["exten"],
+                "summary": "One2Many",
+                "description": "JOIN",
+
+                "parameters": [{
+                    "in": "path",
+                    "name": "from",
+                    "description": "Snake case table name ( from )",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "in": "path",
+                    "name": "to",
+                    "description": "Snake case table name ( to )",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "in": "path",
+                    "name": "vars",
+                    "description": "col.name:val,col_name:val",
+                    "required": true,
+                    "type": "string"
+                }],
+
+                "responses": {
+                    "200": {
+                        "description": "{id:1, join:[{...},{...}], count:3 }",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "INTERNAL ERROR",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/{from}:{to}/unfold/{vars}": {
+            "get": {
+                "tags": ["exten"],
+                "summary": "One2One",
+                "description": "JOIN",
+
+                "parameters": [{
+                    "in": "path",
+                    "name": "from",
+                    "description": "Snake case table name ( from )",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "in": "path",
+                    "name": "to",
+                    "description": "Snake case table name ( to )",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "in": "path",
+                    "name": "vars",
+                    "description": "col.name:val,col_name:val",
+                    "required": true,
+                    "type": "string"
+                }],
+
+                "responses": {
+                    "200": {
+                        "description": "{id:1, join:[{...},{...}], count:3 }",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "INTERNAL ERROR",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategySet": {
+            "get": {
+                "tags": ["strategy_set"],
+                "summary": "StrategySet information",
+                "description": "StrategySet. List.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            },
+            "put": {
+                "tags": ["strategy_set"],
+                "summary": " Add/change",
+                "description": "StrategySet. Save.",
+                "operationId": "strategy_setSave",
+                "parameters": [{
+                    "in": "formData",
+                    "name": "id",
+                    "description": "id",
+                    "required": false,
+                    "type": "integer",
+                    "format": "int32"
+                }, {
+                    "in": "formData",
+                    "name": "name",
+                    "type": "string",
+                    "description": "StrategySet name",
+                    "required": true
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategySet/{id}/child/strategyToSet": {
+            "get": {
+                "tags": ["strategy_set"],
+                "summary": "Strategies",
+                "description": "JOIN",
+
+                "parameters": [{
+                    "in": "formData",
+                    "name": "id",
+                    "description": "id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+
+                "responses": {
+                    "200": {
+                        "description": "{id:1, join:[{...},{...}], count:3 }",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "INTERNAL ERROR",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategySet/{id}": {
+            "get": {
+                "tags": ["strategy_set"],
+                "summary": "StrategySet information",
+                "description": "Strategy data",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get strategy data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["strategy_set"],
+                "summary": "StrategySet delete",
+                "description": "StrategySet delete by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete StrategySet data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyToSet": {
+            "get": {
+                "tags": ["strategy_set"],
+                "summary": "StrategyToSet information",
+                "description": "StrategyToSet. List.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            },
+            "put": {
+                "tags": ["strategy_set"],
+                "summary": " Add/change",
+                "description": "StrategyToSet. Save.",
+                "operationId": "strategy_to_setSave",
+                "parameters": [{
+                    "in": "formData",
+                    "name": "id",
+                    "description": "id",
+                    "required": false,
+                    "type": "integer",
+                    "format": "int32"
+                }, {
+                    "in": "formData",
+                    "name": "strategy_id",
+                    "description": "strategy_id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }, {
+                    "in": "formData",
+                    "name": "strategy_set_id",
+                    "description": "strategy_set_id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyToSet/{id}": {
+            "get": {
+                "tags": ["strategy_set"],
+                "summary": "StrategyToSet information",
+                "description": "Strategy data",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get strategy data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["strategy_set"],
+                "summary": "StrategyToSet delete",
+                "description": "StrategyToSet delete by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete StrategyToSet data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/v2/StrategyToSet/{id}/child/strategy": {
+            "get": {
+                "tags": ["strategy_set"],
+                "summary": "Strategies",
+                "description": "JOIN",
+
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+
+                "responses": {
+                    "200": {
+                        "description": "{id:1, join:[{...},{...}], count:3 }",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "INTERNAL ERROR",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/Strategy": {
+            "get": {
+                "tags": ["strategy"],
+                "summary": "Strategies information",
+                "description": "List of strategies",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["strategy"],
+                "summary": "Add/change strategy",
+                "description": "Strategy save",
+                "operationId": "strategySave",
+                "parameters": [{
+                        "in": "formData",
+                        "name": "id",
+                        "type": "integer",
+                        "description": "Strategy id (for editing)",
+                        "required": false
+                    }, {
+                        "in": "formData",
+                        "name": "priority",
+                        "type": "integer",
+                        "description": "Strategy priority",
+                        "required": false
+                    }, {
+                        "in": "formData",
+                        "name": "name",
+                        "type": "string",
+                        "description": "Strategy name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "is_public",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": false
+                    }, {
+                        "in": "formData",
+                        "name": "is_main",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": false
+                    }
+
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/v2/Strategy/{id}": {
+            "get": {
+                "tags": ["strategy"],
+                "summary": "Strategy information",
+                "description": "Strategy data",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get strategy data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["strategy"],
+                "summary": "Strategy delete",
+                "description": "Strategy delete by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete strategy data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/StrategyItem": {
+            "get": {
+                "tags": ["strategy_item"],
+                "summary": "Strategy item list",
+                "description": "List of strategies items (strategy_id+template_id)",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy_item"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["strategy_item"],
+                "summary": "Add/change strategy_item",
+                "description": "StrategyItem save",
+                "operationId": "strategyItemSave",
+                "parameters": [{
+                    "in": "formData",
+                    "name": "id",
+                    "type": "integer",
+                    "description": "Strategy id (for editing)",
+                    "required": false
+                }, {
+                    "in": "formData",
+                    "name": "strategy_id",
+                    "type": "integer",
+                    "description": "strategy_id",
+                    "required": false
+                }, {
+                    "in": "formData",
+                    "name": "task_type_id",
+                    "type": "integer",
+                    "description": "task_type_id",
+                    "required": false
+                }, {
+                    "in": "formData",
+                    "name": "name",
+                    "type": "string",
+                    "description": "Strategy name",
+                    "required": true
+                }, {
+                    "in": "formData",
+                    "name": "is_public",
+                    "type": "boolean",
+                    "description": "active",
+                    "required": false
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/v2/StrategyItem/{id}": {
+            "get": {
+                "tags": ["strategy_item"],
+                "summary": "Strategy item info",
+                "description": "Load strategy item by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get strategy item by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy_item"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["strategy_item"],
+                "summary": "StrategyItem delete",
+                "description": "StrategyItem delete by id",
+
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete StrategyItem data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy_item"
+                        }
+                    }
+                }
+
+            }
+        },
+        "/v2/StrategyItem/{id}/child/strategyItemFiltersCase": {
+            "get": {
+                "tags": ["strategy_item"],
+                "summary": "Cases from worker",
+                "description": "Get cases from worker using strategy_item_id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "strategy_item_id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+
+                        }
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyItem/{id}/child/strategyItemFiltersCaseDebug": {
+            "get": {
+                "tags": ["strategy_item"],
+                "summary": "Cases from worker. Request string",
+                "description": "Get request string for query",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "strategy_item_id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+
+                        }
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyItem/{id}/child/Historycases": {
+            "get": {
+                "tags": ["strategy_item"],
+                "summary": "Get responses from worker history",
+                "description": "Get responses from worker history",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "strategy_item_id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+
+                        }
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyItemFilter": {
+
+            "get": {
+                "tags": ["strategy_item_filter"],
+                "summary": "Strategy item filters list",
+                "description": "Strategy item filters list",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            },
+
+
+            "put": {
+                "tags": ["strategy_item_filter"],
+                "summary": "Strategies item filter",
+                "description": "List of strategies item filter",
+                "parameters": [{
+                        "in": "formData",
+                        "name": "id",
+                        "type": "integer",
+                        "description": "Strategy id (for editing)",
+                        "required": false
+                    }, {
+                        "in": "formData",
+                        "name": "strategy_item_id",
+                        "type": "integer",
+                        "description": "strategy_item_id",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "strategy_variable_value",
+                        "type": "string",
+                        "description": "strategy_variable_value",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "strategy_filter_name",
+                        "type": "string",
+                        "description": "strategy_filter_name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "strategy_filter_value",
+                        "type": "string",
+                        "description": "strategy_filter_value",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "is_public",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": false
+                    }, {
+                        "in": "formData",
+                        "name": "is_or",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": false
+                    }, {
+                        "in": "formData",
+                        "name": "is_segment",
+                        "type": "boolean",
+                        "description": "false",
+                        "required": false
+                    }
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/TaskType": {
+            "get": {
+                "tags": ["task_type"],
+                "summary": "Task types information",
+                "description": "SMS, IVR, Letter, Call",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/task_type"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["task_type"],
+                "summary": "Add/change task_type",
+                "description": "TaskType save",
+                "operationId": "strategySave",
+                "parameters": [
+
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "type": "integer",
+                        "description": "TaskType id (for editing)",
+                        "required": false
+                    },
+
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "type": "string",
+                        "description": "TaskType name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "is_public",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/v2/TaskType/{id}": {
+            "get": {
+                "tags": ["task_type"],
+                "summary": "Task type information",
+                "description": "SMS, IVR, Letter, Call",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get task type data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/task_type"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["task_type"],
+                "summary": "TaskType delete",
+                "description": "TaskType delete by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete TaskType data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/v2/Schedule": {
+            "get": {
+                "tags": ["schedule"],
+                "summary": "Schedule information",
+                "description": " 'date' - date of schedule; 'is_working' - is working day?",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            },
+            "put": {
+                "tags": ["schedule"],
+                "summary": "Add/change schedule",
+                "description": "Schedule save",
+                "operationId": "strategySave",
+                "parameters": [{
+                        "in": "formData",
+                        "name": "id",
+                        "type": "integer",
+                        "description": "Schedule id (for editing)",
+                        "required": false
+                    },
+
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "type": "string",
+                        "description": "Schedule name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "is_public",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+
+        "/v2/Schedule/{id}": {
+            "get": {
+                "tags": ["schedule"],
+                "summary": "Task type information",
+                "description": "SMS, IVR, Letter, Call",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get task type data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/schedule"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["schedule"],
+                "summary": "Schedule delete",
+                "description": "Schedule delete by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete Schedule data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/w/v2/Contragent": {
+            "get": {
+                "tags": ["worker"],
+                "summary": "Contragent",
+                "description": "Contragent",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy-filter"
+                        }
+                    }
+                }
+            }
+        },
+        "/w/v2/StrategyFilter": {
+            "get": {
+                "tags": ["worker"],
+                "summary": "Worker strategy filters",
+                "description": "List of filters",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy-filter"
+                        }
+                    }
+                }
+            }
+        },
+        "/w/v2/StrategyFilterType": {
+            "get": {
+                "tags": ["worker"],
+                "summary": "Worker filters types",
+                "description": "List of filters types",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy-filter-type"
+                        }
+                    }
+                }
+            }
+        },
+        "/w/v2/StrategyVariables": {
+            "get": {
+                "tags": ["worker"],
+                "summary": "Worker strategy variables",
+                "description": "List of strategy variables",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy-variables"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyPause": {
+            "get": {
+                "tags": ["strategy_pause"],
+                "summary": "StrategyPause information",
+                "description": "StrategyPause. List.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            },
+            "post": {
+                "tags": ["strategy_pause"],
+                "summary": " Add/change",
+                "description": "StrategyPause. Save.",
+                "operationId": "strategy_pauseSave",
+                "parameters": [{
+                        "in": "formData",
+                        "name": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32",
+                        "required": true
+                    },
+
+                    {
+                        "in": "formData",
+                        "name": "strategy_id",
+                        "description": "strategy_id",
+                        "type": "integer",
+                        "format": "int32",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "pause_from",
+                        "type": "string",
+                        "description": "StrategyPause name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "pause_to",
+                        "type": "string",
+                        "description": "StrategyPause name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "comment",
+                        "type": "string",
+                        "description": "StrategyPause name",
+                        "required": true
+                    }, {
+                        "in": "formData",
+                        "name": "set_is_public_to",
+                        "type": "boolean",
+                        "description": "active",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+
+        "/v2/StrategyPause/{id}": {
+
+            "get": {
+                "tags": ["strategy_pause"],
+                "summary": "StrategyPause information",
+                "description": "Strategy data",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Get strategy data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            },
+
+            "delete": {
+                "tags": ["strategy_pause"],
+                "summary": "StrategyPause delete",
+                "description": "StrategyPause delete by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Delete StrategyPause data by id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/v2/wquery/strategy": {
+            "get": {
+                "tags": ["strategy_info"],
+                "summary": "Extended information for all strategies",
+                "description": "Get extended information for all strategies",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {
+                            "$ref": "definitions.json#/strategy-variables"
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "/v2/wquery/strategy/{id}": {
+            "get": {
+                "tags": ["strategy_info"],
+                "summary": "Strategy extended information",
+                "description": "Strategy, strategy_pause, strategy_filters",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "description": "Strategy extended information id",
+                    "required": true,
+                    "type": "integer",
+                    "format": "int32"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+
+
+
+    }
+}

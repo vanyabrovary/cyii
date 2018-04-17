@@ -1,0 +1,116 @@
+{
+    "strategy-filter-type": {
+        "type": "object",
+        "required": ["ID", "Name"],
+        "properties": {
+            "ID": {
+                "type": "integer"
+            },
+            "Name": {
+                "type": "string"
+            }
+        }
+    },
+
+    "strategy-variables": {
+        "type": "object",
+        "required": ["ID", "Name", "Value"],
+        "properties": {
+            "ID": {
+                "type": "integer"
+            },
+            "Name": {
+                "type": "string"
+            },
+            "Value": {
+                "type": "string"
+            }
+        }
+    },
+
+    "strategy-filter": {
+        "type": "object",
+        "required": ["ID", "Name", "FilterTypeID"],
+        "properties": {
+            "ID": {
+                "type": "integer"
+            },
+            "Name": {
+                "type": "string"
+            },
+            "FilterTypeID": {
+                "type": "integer"
+            }
+        }
+    },
+
+    "id_name_is_public": {
+        "type": "object",
+        "required": ["name", "is_public"],
+        "properties": {
+            "id": {
+                "type": "integer"
+            },
+            "name": {
+                "type": "string"
+            },
+            "is_public": {
+                "type": "boolean",
+                "default": true
+            }
+        }
+    },
+
+    "strategy": {
+        "type": "object",
+        "required": ["name", "is_public"],
+        "properties": {
+            "id": {
+                "type": "integer"
+            },
+            "name": {
+                "type": "string"
+            },
+            "priority": {
+                "type": "integer"
+            },
+            "is_public": {
+                "type": "boolean",
+                "default": true
+            }
+        }
+    },
+
+    "task_type": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+            "id": {
+                "type": "integer"
+            },
+            "name": {
+                "type": "string"
+            }
+        }
+    },
+
+    "strategy_item": {
+        "type": "object",
+        "required": ["id", "strategy_id", "task_type_id", "name"],
+        "properties": {
+            "id": {
+                "type": "integer"
+            },
+            "task_type_id": {
+                "type": "integer"
+            },
+            "strategy_id": {
+                "type": "integer",
+                "description": "strategy"
+            },
+            "name": {
+                "type": "string"
+            }
+        }
+    }
+}
